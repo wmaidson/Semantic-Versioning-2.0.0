@@ -58,15 +58,15 @@ Rótulos adicionais para pré-lançamento(pre-release) e metadados de construç�
 
   3. A precedência entre duas versões de Pré-lançamento com mesma versão Maior, Menor e Correção DEVE ser determinada comparando cada identificador separado por ponto da esquerda para direita até que seja encontrada diferença da seguinte forma:
 
-    1. Identificadores consistindo apenas dígitos são comparados numericamente.
+   1. Identificadores consistindo apenas dígitos são comparados numericamente.
 
-    2.  Identificadores com letras ou hífen são comparados lexicalmente na ordem de classificação ASCII.
+   2.  Identificadores com letras ou hífen são comparados lexicalmente na ordem de classificação ASCII.
 
-    3. Identificadores numéricos sempre têm menor precedência do que os não numéricos.
+   3. Identificadores numéricos sempre têm menor precedência do que os não numéricos.
 
-    4. Um conjunto maior de campos de pré-lançamento tem uma precedência maior do que um conjunto menor, se todos os identificadores anteriores são iguais.
+   4. Um conjunto maior de campos de pré-lançamento tem uma precedência maior do que um conjunto menor, se todos os identificadores anteriores são iguais.
 
-      Exemplo: 1.0.0-alpha < 1.0.0-alpha.1 < 1.0.0-alpha.beta < 1.0.0-beta < 1.0.0-beta.2 < 1.0.0-beta.11 < 1.0.0-rc.1 < 1.0.0.
+   Exemplo: 1.0.0-alpha < 1.0.0-alpha.1 < 1.0.0-alpha.beta < 1.0.0-beta < 1.0.0-beta.2 < 1.0.0-beta.11 < 1.0.0-rc.1 < 1.0.0.
 
 ## Por que usar Versionamento Semântico?
 
