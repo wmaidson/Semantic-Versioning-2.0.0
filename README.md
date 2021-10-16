@@ -26,7 +26,7 @@ Rótulos adicionais para pré-lançamento(pre-release) e metadados de construç�
 
 1. Software usando Versionamento Semântico DEVE declarar uma API pública. Esta API poderá ser declarada no próprio código ou existir estritamente na documentação, desde que seja precisa e compreensiva.
 
-2. Um número de versão normal DEVE ter o formato de X.Y.Z, onde X, Y, e Z são inteiros não negativos, e NÃO DEVE conter zeros à esquerda. X é a versão Maior, Y é a versão Menor, e Z é a versão de Correção. Cada elemento DEVE aumentar numericamente. Por exemplo: 1.9.0 -> 1.10.0 -> 1.11.0.
+2. Um número de versão normal DEVE ter o formato de X.Y.Z, onde X, Y, e Z são inteiros não negativos, e NÃO DEVE conter zeros à esquerda. X é a versão Maior, Y é a versão Menor, e Z é a versão de Correção. Cada elemento DEVE aumentar numericamente. Por exemplo: `1.9.0` -> `1.10.0` -> `1.11.0`.
 
 3. Uma vez que um pacote versionado foi lançado(released), o conteúdo desta versão NÃO DEVE ser modificado. Qualquer modificação DEVE ser lançado como uma nova versão.
 
@@ -40,21 +40,23 @@ Rótulos adicionais para pré-lançamento(pre-release) e metadados de construç�
 
 8. Versão Maior X (X.y.z | X > 0) DEVE ser incrementada se forem introduzidas mudanças incompatíveis na API pública. PODE incluir alterações a nível de versão Menor e de versão de Correção. Versão de Correção e Versão Menor DEVEM ser redefinidas para 0(zero) quando a versão Maior for incrementada.
 
-9. Uma versão de Pré-Lançamento (pre-release) PODE ser identificada adicionando um hífen (dash) e uma série de identificadores separados por ponto (dot) imediatamente após a versão de Correção. Identificador DEVE incluir apenas caracteres alfanuméricos e hífen [0-9A-Za-z-]. Identificador NÃO DEVE ser vazio. Indicador numérico NÃO DEVE incluir zeros à esquerda. Versão de Pré-Lançamento tem precedência inferior à versão normal a que está associada. Uma versão de Pré-Lançamento (pre-release) indica que a versão é instável e pode não satisfazer os requisitos de compatibilidade pretendidos, como indicado por sua versão normal associada. Exemplos: 1.0.0-alpha, 1.0.0-alpha.1, 1.0.0-0.3.7, 1.0.0-x.7.z.92.
+9. Uma versão de Pré-Lançamento (pre-release) PODE ser identificada adicionando um hífen (dash) e uma série de identificadores separados por ponto (dot) imediatamente após a versão de Correção. Identificador DEVE incluir apenas caracteres alfanuméricos e hífen [0-9A-Za-z-]. Identificador NÃO DEVE ser vazio. Indicador numérico NÃO DEVE incluir zeros à esquerda. Versão de Pré-Lançamento tem precedência inferior à versão normal a que está associada. Uma versão de Pré-Lançamento (pre-release) indica que a versão é instável e pode não satisfazer os requisitos de compatibilidade pretendidos, como indicado por sua versão normal associada. Exemplos: `1.0.0-alpha`, `1.0.0-alpha.1`, `1.0.0-0.3.7`, `1.0.0-x.7.z.92`.
 
-10. Metadados de construção(Build) PODE ser identificada por adicionar um sinal de adição (+) e uma série de identificadores separados por ponto imediatamente após a Correção ou Pré-Lançamento. Identificador DEVE ser composto apenas por caracteres alfanuméricos e hífen [0-9A-Za-z-]. Identificador NÃO DEVE ser vazio. Metadados de construção PODEM ser ignorados quando se determina a versão de precedência. Assim, duas versões que diferem apenas nos metadados de construção, têm a mesma precedência. Exemplos: 1.0.0-alpha+001, 1.0.0+20130313144700, 1.0.0-beta+exp.sha.5114f85.
+10. Metadados de construção(Build) PODE ser identificada por adicionar um sinal de adição (+) e uma série de identificadores separados por ponto imediatamente após a Correção ou Pré-Lançamento. Identificador DEVE ser composto apenas por caracteres alfanuméricos e hífen [0-9A-Za-z-]. Identificador NÃO DEVE ser vazio. Metadados de construção PODEM ser ignorados quando se determina a versão de precedência. Assim, duas versões que diferem apenas nos metadados de construção, têm a mesma precedência. Exemplos: `1.0.0-alpha+001`, `1.0.0+20130313144700`, `1.0.0-beta+exp.sha.5114f85`.
 
 11. A precedência refere como as versões são comparadas uma com a outra quando solicitado.
 
 12. A precedência DEVE ser calculada separando identificadores de versão em Maior, Menor, Correção e Pré-lançamento, nesta ordem. (Metadados de construção não faz parte da precedência).
 
+#### Precedência
+
   1. A precedência é determinada pela primeira diferença quando se compara cada identificador da esquerda para direita, como se segue: Versões Maior, Menor e Correção são sempre comparadas numericamente.
 
-      Exemplo: 1.0.0 < 2.0.0 < 2.1.0 < 2.1.1.
+      Exemplo: `1.0.0` < `2.0.0` < `2.1.0` < `2.1.1`.
 
    2. Quando Maior, Menor e Correção são iguais, a versão de Pré-Lançamento tem precedência menor que a versão normal.
 
-      Exemplo: 1.0.0-alpha < 1.0.0.
+      Exemplo: `1.0.0-alpha` < `1.0.0`.
 
   3. A precedência entre duas versões de Pré-lançamento com mesma versão Maior, Menor e Correção DEVE ser determinada comparando cada identificador separado por ponto da esquerda para direita até que seja encontrada diferença da seguinte forma:
 
@@ -66,7 +68,7 @@ Rótulos adicionais para pré-lançamento(pre-release) e metadados de construç�
 
    4. Um conjunto maior de campos de pré-lançamento tem uma precedência maior do que um conjunto menor, se todos os identificadores anteriores são iguais.
 
-   Exemplo: 1.0.0-alpha < 1.0.0-alpha.1 < 1.0.0-alpha.beta < 1.0.0-beta < 1.0.0-beta.2 < 1.0.0-beta.11 < 1.0.0-rc.1 < 1.0.0.
+   Exemplo: `1.0.0-alpha` < `1.0.0-alpha.1` < `1.0.0-alpha.beta` < `1.0.0-beta` < `1.0.0-beta.2` < `1.0.0-beta.11` < `1.0.0-rc.1` < `1.0.0`.
 
 ## Por que usar Versionamento Semântico?
 
@@ -79,34 +81,36 @@ Como um desenvolvedor responsável você irá, é claro, querer certificar-se qu
 Se tudo isto soa desejável, tudo que você precisar fazer para começar a usar Versionamento Semântico é declarar que você o esta usando e então, seguir as regras. Adicione um link para este website no seu README para que outros saibam as regras e possam beneficiar-se delas.
 
 FAQ
-**Como devo lidar com revisões na fase 0.y.z de desenvolvimento inicial?**
+#### Como devo lidar com revisões na fase 0.y.z de desenvolvimento inicial?
 A coisa mais simples a se fazer é começar sua versão de desenvolvimento inicial em 0.1.0 e, então, incrementar a uma versão ‘menor’ em cada lançamento subsequente.
-
-**Como eu sei quando lançar a versão 1.0.0?**
+___
+#### Como eu sei quando lançar a versão 1.0.0?
 Se seu software está sendo usado em produção, ele já deve ser provavelmente 1.0.0. Se você possui uma API estável a qual usuários passaram a depender, deve ser 1.0.0. Se você está se preocupando bastante com compatibilidade com versões anteriores, já deve ser 1.0.0.
-
-**Isto não desencoraja o desenvolvimento ágil e iteração rápida?**
+___
+#### Isto não desencoraja o desenvolvimento ágil e iteração rápida?
 A versão Maior zero tem o foco exatamente no desenvolvimento rápido. Se você está mudando a API todo dia, provavelmente você está na versão 0.y.z ou num branch separado de desenvolvimento, trabalhando numa próxima versão Maior.
-
-**Se mesmo a menor mudança incompatível com a API pública requer aumento da versão maior, não vou acabar na versão 42.0.0 muito rapidamente?**
+___
+#### Se mesmo a menor mudança incompatível com a API pública requer aumento da versão maior, não vou acabar na versão 42.0.0 muito rapidamente?
 Esta é uma questão de desenvolvimento responsável e conhecimento antecipado. Mudanças incompatíveis não devem ser levemente introduzidas para o software que tem um monte de código dependente. O custo que deve ser incorrido para atualizar pode ser significante. Tendo que aumentar a versão maior para lançar mudanças incompatíveis, significa que você pensará no impacto das suas mudanças, e avaliará a relação de custo/benefício envolvida.
-
-**Documentar toda a API pública dá muito trabalho!**
+___
+#### Documentar toda a API pública dá muito trabalho!
 É sua responsabilidade como desenvolvedor profissional documentar corretamente o software que será usado por outros. Gerenciar a complexidade de software é uma parte muito importante para manter o projeto eficiente, e isto é difícil de fazer se ninguém sabe como usá-lo ou que métodos são seguros de chamar. A longo prazo, Versionamento Semântico e a insistência em uma API pública bem definida podem deixar tudo e todos funcionando suavemente.
-
-**O que eu faço se, acidentalmente, liberar uma mudança incompatível com versões anteriores como uma versão menor (minor version)?**
+___
+#### O que eu faço se, acidentalmente, liberar uma mudança incompatível com versões anteriores como uma versão menor (minor version)?
 Assim que você perceber que quebrou a especificação de versionamento semântico, conserte o problema e lance uma nova versão menor, que corrige o problema e restaura a compatibilidade. Mesmo sob esta circunstância, é inaceitável modificar versões lançadas. Se for apropriado, documente a versão ofensiva e informe seus usuários do problema de forma que eles fiquem cientes da versão em questão.
-
-**O que devo fazer se eu atualizar minhas próprias dependências sem modificar a API pública?**
+___
+####O que devo fazer se eu atualizar minhas próprias dependências sem modificar a API pública?
 Isso seria considerado compatível, uma vez que não afeta a API pública. Software que depende explicitamente da mesmas dependências que seu pacote, deve ter sua própria especificação de dependência e o autor notificará quaisquer conflitos. Para determinar se a mudança é a nível de correção ou modificação de nível menor dependente se você atualizou suas dependências a fim de corrigir um bug ou introduzir nova funcionalidade. Eu normalmente esperaria código adicional para última instância, caso em que é obviamente um incremento no nível menor.
+___
+#### E se eu alterei inadvertidamente a API pública de forma incompatível com a mudança no número de versão
+(ex.: o código incorretamente introduz uma grande mudança incompatível em liberação de um patch).
 
-**E se eu alterei inadvertidamente a API pública de forma incompatível com a mudança no número de versão (ex.: o código incorretamente introduz uma grande mudança incompatível em liberação de um patch)**
 Use o bom senso. Se você tem um público enorme que será drasticamente impactado pela mudança de comportamento de volta para o que a API pública pretendida, então pode ser melhor realizar um lançamento de uma versão maior, mesmo que a correção pudesse ser considerada estritamente uma versão de correção. Lembre-se, Versionamento Semântico trata de transmitir o conhecimento das mudanças ocorridas na versão. Se estas mudanças são importantes para seus usuários, utilize o número da versão para informá-los.
-
-**Como devo lidar com descontinuação de funcionalidades?**
+___
+#### Como devo lidar com descontinuação de funcionalidades?
 Descontinuar funcionalidades é um processo comum no desenvolvimento de software e muitas vezes é necessário para haver progresso. Quando você descontinua partes de sua API pública, você deve fazer duas coisas: (1) atualizar sua documentação, para que os usuários saibam das mudanças, (2) lançar uma versão Menor anunciando a descontinuação. Antes de remover completamente a funcionalidade em uma versão Maior deve haver ao menos uma versão Menor que possui a descontinução anunciada, fazendo com que os usuários realizem uma transição tranquila para a nova API.
-
-**O SemVer tem um limite de tamanho para string de versão?**
+___
+#### O SemVer tem um limite de tamanho para string de versão?
 Não, mas use o bom senso. Uma string de versão com 255 caracteres por exemplo, provavelmente é um exagero. Porém, sistemas específicos podem definir seus prórios limites para o tamanho da string.
 
-Referências[Semantic-Versioning-2.0.0](https://semver.org/lang/pt-BR/), [rfc2119](https://datatracker.ietf.org/doc/html/rfc2119)
+Referências: [Semantic-Versioning-2.0.0](https://semver.org/lang/pt-BR/) e [rfc2119](https://datatracker.ietf.org/doc/html/rfc2119)
